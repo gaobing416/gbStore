@@ -18,6 +18,9 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { login } from '../../api/index'
+import {useRouter} from 'vue-router';
+import {setToken} from '../../untils/auth'
+const router = useRouter()
 const ruleFormRef = ref()
 const form = reactive({
     account: 'admin',
@@ -31,27 +34,41 @@ const rules = reactive({
     ],
     password: [
         { required: true, message: '请输入密码', trigger: 'blur' },
-        { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+        { min: 3, max: 6, message: 'Length should be 3 to 6', trigger: 'blur' },
     ],
 })
 //确定
-const submitForm =  (formEl) => {
-  if (!formEl) return
-   formEl.validate(async(valid, fields) => {
-    if (valid) {
-        // 校验通过
-    let res = await login(form)
-      console.log(res)
-    } else {
-      console.log('error submit!', fields)
-    }
-  })
+const uid = ref(0)
+const submitForm = (formEl) => {
+    if (!formEl) return
+    formEl.validate(async (valid) => {
+        if (valid) {
+            // 校验通过
+            let res = await login()
+            let {account,token,status,password} = res.data[uid.value]  //接口里面
+            console.log(res.data[uid.value])
+            // 验证跳转首页
+            if( form.account == account & form.password ==  password  ){
+                
+                router.push('/home')
+                setToken(token) //存进去
+                alert('登录成功')
+            }else if(form.account != account & form.password ==  password ){
+                alert('用户名错')
+                // console.log("登录失败")
+            }else{
+                alert('用户名或密码错误')
+            }
+        } else {
+            console.log('error submit!')
+        }
+    })
 }
 const resetForm = (formEl) => {
-  if (!formEl) return
-  formEl.resetFields()
+    if (!formEl) return
+    formEl.resetFields()
 }
 </script>
 <style lang="ts" scoped>
 
-</style>
+</style>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

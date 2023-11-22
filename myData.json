@@ -1,0 +1,111 @@
+{
+  "role": [
+    {
+      "id": 1,
+      "uid": 1,
+      "userName": "Admin",
+      "account": "admin",
+      "password": "123456",
+      "email": "admin@416.com",
+      "msg": "登录成功",
+      "phone": "1592366556",
+      "status": 1,
+      "token": "1",
+      "role":0
+    }
+  ],
+  "nav": [
+    {
+      "id":1,
+      "uid":1,
+      "res":[
+        {
+          "mid":1,
+          "name":"index",
+          "title":"首页",
+          "path":"/index",
+          "components":"index",
+          "icon":"<HomeFilled/>"
+        },
+        {
+          "mid":2,
+          "name":"census",
+          "title":"统计管理",
+          "path":"/census",
+          "components":"census",
+          "icon":"HomeFilled"
+        },
+        {
+          "mid":3,
+          "name":"order",
+          "title":"订单",
+          "path":"/order",
+          "components":"order",
+          "icon":"HomeFilled"
+      },
+        {
+          "mid":4,
+        "name":"member",
+        "title":"会员",
+        "path":"/member",
+        "components":"member",
+        "icon":"HomeFilled"}
+      ],
+      "role":{
+        "rid":1,
+        "name":"admin"
+      }
+    },
+    {
+      "id":2,
+      "uid":2,
+      "res":[
+        {
+          "mid":1,
+          "name":"index",
+          "title":"首页",
+          "path":"/index",
+          "components":"index",
+          "icon":"HomeFilled"
+        },
+        {
+          "mid":2,
+          "name":"person",
+          "title":"个人",
+          "path":"/person",
+          "components":"person",
+          "icon":"HomeFilled"
+        }
+      ],
+      "role":{
+        "rid":2,
+        "name":"member"
+      }
+    },
+    {"id":3,
+      "uid":3,
+      "res":[
+        {
+          "mid":1,
+          "name":"index",
+          "title":"首页",
+          "path":"/index",
+          "components":"index",
+          "icon":"HomeFilled"
+        },
+        {
+          "mid":2,
+          "name":"person",
+          "title":"个人",
+          "path":"/person",
+          "components":"person",
+          "icon":"HomeFilled"
+        }
+      ],
+      "role":{
+        "rid":3,
+        "name":"visitor"
+      }
+    }
+  ]
+}

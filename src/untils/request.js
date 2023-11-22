@@ -1,11 +1,13 @@
 import axios from 'axios'
+import {getToken} from './auth'
 // 封装接口
 const service = axios.create({
-    baseURL:''
+    baseURL:'http://localhost:3000'
 })
 //请求拦截器
 service.interceptors.request.use(config=>{
     // 头部携带token
+    config.headers['token'] = getToken()
     return config
 })
 // 响应拦截器
