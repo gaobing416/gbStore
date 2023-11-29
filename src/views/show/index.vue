@@ -1,5 +1,5 @@
 <template>
     <div>
-        <router-view></router-view>
+        欢迎
     </div>
 </template>

@@ -2,35 +2,33 @@
     <div>
         <el-aside width="200px">
             <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-                <el-radio-button :label="false">expand</el-radio-button>
-                <el-radio-button :label="true">collapse</el-radio-button>
+                <el-radio-button :label="false">展开</el-radio-button>
+                <el-radio-button :label="true">收拢</el-radio-button>
             </el-radio-group>
             <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen"
                 @close="handleClose" router>
-                <el-menu-item v-for="data in navItems" :key="data.path" :index="data.path">
-                    <el-icon><Location/></el-icon>
-                    <span></span>
-                    <template #title>{{ data.title }}</template>
-                </el-menu-item>
+
+                <NavItem v-for="data in navItems" :key="data.path" :navItems="data">
+                   
+                </NavItem>
+                
             </el-menu>
         </el-aside>
     </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineProps } from 'vue'
+import NavItem from './NavItem.vue'
 import { getNav } from '../../api'
-import {getToken} from '../../untils/auth'
-import {
-    Document,
-    Menu as IconMenu,
-    Location,
-    Setting,
-} from '@element-plus/icons-vue'
-// import { da } from 'element-plus/es/locale';
+import { getToken } from '../../untils/auth'
+import { HomeFilled } from '@element-plus/icons-vue'
 const navItems = ref([])//导航数据
 const isCollapse = ref(true)
 const handleOpen = (key, keyPath) => {
-    //   console.log(key, keyPath)
+    // console.log(key, keyPath)
+}
+const handleClick = () => {
+
 }
 const handleClose = (key, keyPath) => {
     //   console.log(key, keyPath)

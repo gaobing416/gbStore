@@ -11,101 +11,192 @@
       "phone": "1592366556",
       "status": 1,
       "token": "1",
-      "role":0
+      "role": 0
     }
   ],
   "nav": [
     {
-      "id":1,
-      "uid":1,
-      "res":[
+      "id": 1,
+      "uid": 1,
+      "res": [
         {
-          "mid":1,
-          "name":"index",
-          "title":"首页",
-          "path":"/index",
-          "components":"index",
-          "icon":"<HomeFilled/>"
+          "mid": 1,
+          "name": "index",
+          "title": "首页",
+          "path": "/index",
+          "components": "index",
+          "icon": "Location"
         },
         {
-          "mid":2,
-          "name":"census",
-          "title":"统计管理",
-          "path":"/census",
-          "components":"census",
-          "icon":"HomeFilled"
+          "mid": 2,
+          "name": "census",
+          "title": "统计管理",
+          "path": "/census",
+          "components": "census",
+          "icon": "HomeFilled",
+          "child": [
+            {
+              "title": "统计管理详情",
+              "path": "/census/info",
+              "name": "info"
+            },
+            {
+              "title": "统计管理列表",
+              "path": "/census/list",
+              "name": "list"
+            }
+          ]
         },
         {
-          "mid":3,
-          "name":"order",
-          "title":"订单",
-          "path":"/order",
-          "components":"order",
-          "icon":"HomeFilled"
-      },
+          "mid": 3,
+          "name": "order",
+          "title": "订单",
+          "path": "/order",
+          "components": "order",
+          "icon": "HomeFilled"
+        },
         {
-          "mid":4,
-        "name":"member",
-        "title":"会员",
-        "path":"/member",
-        "components":"member",
-        "icon":"HomeFilled"}
+          "mid": 4,
+          "name": "member",
+          "title": "会员",
+          "path": "/member",
+          "components": "member",
+          "icon": "HomeFilled"
+        }
       ],
-      "role":{
-        "rid":1,
-        "name":"admin"
+      "role": {
+        "rid": 1,
+        "name": "admin"
       }
     },
     {
-      "id":2,
-      "uid":2,
-      "res":[
+      "id": 2,
+      "uid": 2,
+      "res": [
         {
-          "mid":1,
-          "name":"index",
-          "title":"首页",
-          "path":"/index",
-          "components":"index",
-          "icon":"HomeFilled"
+          "mid": 1,
+          "name": "index",
+          "title": "首页",
+          "path": "/index",
+          "components": "index",
+          "icon": "HomeFilled"
         },
         {
-          "mid":2,
-          "name":"person",
-          "title":"个人",
-          "path":"/person",
-          "components":"person",
-          "icon":"HomeFilled"
+          "mid": 2,
+          "name": "person",
+          "title": "个人",
+          "path": "/person",
+          "components": "person",
+          "icon": "HomeFilled"
         }
       ],
-      "role":{
-        "rid":2,
-        "name":"member"
+      "role": {
+        "rid": 2,
+        "name": "member"
       }
     },
-    {"id":3,
-      "uid":3,
-      "res":[
+    {
+      "id": 3,
+      "uid": 3,
+      "res": [
         {
-          "mid":1,
-          "name":"index",
-          "title":"首页",
-          "path":"/index",
-          "components":"index",
-          "icon":"HomeFilled"
+          "mid": 1,
+          "name": "index",
+          "title": "首页",
+          "path": "/index",
+          "components": "index",
+          "icon": "HomeFilled"
         },
         {
-          "mid":2,
-          "name":"person",
-          "title":"个人",
-          "path":"/person",
-          "components":"person",
-          "icon":"HomeFilled"
+          "mid": 2,
+          "name": "person",
+          "title": "个人",
+          "path": "/person",
+          "components": "person",
+          "icon": "HomeFilled"
         }
       ],
-      "role":{
-        "rid":3,
-        "name":"visitor"
+      "role": {
+        "rid": 3,
+        "name": "visitor"
       }
+    }
+  ],
+  "list": [
+    {
+      "id": 2,
+      "date": "2023-12-17",
+      "title": "高兵学习node",
+      "author": "GB",
+      "status": false
+    },
+    {
+      "id": 3,
+      "date": "2023-12-17",
+      "title": "高兵学习node",
+      "author": "GB",
+      "status": false
+    },
+    {
+      "id": 4,
+      "date": "2023-12-17",
+      "title": "高兵学习node",
+      "author": "GB",
+      "status": false
+    },
+    {
+      "id": 5,
+      "date": "2023-12-17",
+      "title": "高兵学习node",
+      "author": "GB",
+      "status": false
+    },
+    {
+      "title": "aa",
+      "author": "GB",
+      "date": "2023-11-07T16:00:00.000Z",
+      "status": "true",
+      "id": 6
+    },
+    {
+      "title": "阿阿",
+      "author": "ml",
+      "date": "2023-11-15T16:00:00.000Z",
+      "status": "true",
+      "id": 7
+    },
+    {
+      "title": "吖吖",
+      "author": "ml",
+      "date": "2023-11-17T16:00:00.000Z",
+      "status": "true",
+      "id": 8
+    }
+  ],
+  "author": [
+    {
+      "id": 1,
+      "name": "GB"
+    },
+    {
+      "id": 2,
+      "name": "ml"
+    },
+    {
+      "id": 3,
+      "name": "hh"
+    },
+    {
+      "id": 4,
+      "name": "td"
+    },
+    {
+      "id": 5,
+      "name": "aa"
+    },
+    {
+      "id": 6,
+      "name": "ll"
     }
   ]
 }

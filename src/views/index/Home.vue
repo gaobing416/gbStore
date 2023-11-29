@@ -1,14 +1,18 @@
 <template>
     <div class="module">
         <el-container>
-                <!-- 左侧导航 -->
-                <Menu></Menu>
+            <!-- 左侧导航 -->
+            <Menu></Menu>
             <el-container>
                 <el-header style="text-align: right; font-size: 12px">
-                    <!-- 头部-->
+                    <!-- 面包屑   监听路由变化-->
+                        <el-breadcrumb separator="/">
+                            <el-breadcrumb-item :to="{path:`${data.path}`}" v-for="data in brList" :key="data.meta">{{ data.meta.title }}</el-breadcrumb-item>
+                        </el-breadcrumb>
                     <el-button @click="goback">退出</el-button>
                 </el-header>
                 <el-main>
+                    首页
                     <router-view></router-view>
                 </el-main>
             </el-container>
@@ -17,45 +21,42 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { Menu as IconMenu, Message, Setting } from '@element-plus/icons-vue'
+import { ref, defineExpose ,onMounted, watch} from 'vue'
+import { } from '@element-plus/icons-vue'
 import Menu from './Menu.vue'
-import {useRouter} from 'vue-router'
-import {removeToken} from '../../untils/auth'
+import { useRouter ,useRoute} from 'vue-router'
+import { removeToken } from '../../untils/auth'
 import { useRouterStore } from '../../store'
-const router= useRouter()
+import {getToken} from '../../untils/auth'
+const route = useRoute()
+const router = useRouter()
+const brList = ref([])
+const token = getToken()
 // 退出
-const goback = ()=>{
-    // useRouterStore().navData = ""
+console.log(token)
+const goback = () => {
+    useRouterStore().navData = ""
     router.push('/login')
     removeToken()
 }
+// 监听路由变化
+watch(route,(to,from)=>{
+    getBreadChange(to.matched)
+})
+const getBreadChange = (matched)=>{
+    brList.value = matched
+}
+onMounted(()=>{
+   console.log(route.matched) 
+   getBreadChange(route.matched)
+})
 </script>
 <style scoped>
-/* .layout-container-demo .el-header {
-    position: relative;
-    background-color: var(--el-color-primary-light-7);
-    color: var(--el-text-color-primary);
+.el-header {
+    border-bottom: solid 1px var(--el-menu-border-color);
 }
 
-.layout-container-demo .el-aside {
-    color: var(--el-text-color-primary);
-    background: var(--el-color-primary-light-8);
+.el-main {
+    border: solid 1px var(--el-menu-border-color);
 }
-
-.layout-container-demo .el-menu {
-    border-right: none;
-}
-
-.layout-container-demo .el-main {
-    padding: 0;
-}
-
-.layout-container-demo .toolbar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    right: 20px;
-} */
 </style>
