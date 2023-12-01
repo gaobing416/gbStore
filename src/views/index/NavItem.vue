@@ -8,17 +8,18 @@
         </el-menu-item>
         
         <el-sub-menu :index="navItems.path" v-else >
-            <el-icon></el-icon>
+            <el-icon>
+                
+            </el-icon>
             <template #title>
                 <span>{{ navItems.title }}</span>
             </template>
             <NavItem v-for="item in navItems.child" :key="item.path" :navItems="item"></NavItem>
         </el-sub-menu>
-
     </div>
 </template>
 <script setup>
-import { HomeFilled } from '@element-plus/icons-vue'
+// import { HomeFilled } from '@element-plus/icons-vue'
 import { defineProps } from 'vue'
 const { navItems } = defineProps({
     navItems: {

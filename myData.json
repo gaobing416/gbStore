@@ -124,11 +124,11 @@
   ],
   "list": [
     {
-      "id": 2,
-      "date": "2023-12-17",
-      "title": "高兵学习node",
-      "author": "GB",
-      "status": false
+      "title": "",
+      "author": "ml",
+      "date": "",
+      "status": "",
+      "id": 2
     },
     {
       "id": 3,
@@ -157,13 +157,6 @@
       "date": "2023-11-07T16:00:00.000Z",
       "status": "true",
       "id": 6
-    },
-    {
-      "title": "阿阿",
-      "author": "ml",
-      "date": "2023-11-15T16:00:00.000Z",
-      "status": "true",
-      "id": 7
     },
     {
       "title": "吖吖",

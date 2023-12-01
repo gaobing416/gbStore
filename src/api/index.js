@@ -1,6 +1,6 @@
 // 
 import axios from '../untils/request.js'
-
+// 登录
 export const login = (data)=>{
     return axios({
         url:'/role',
@@ -8,6 +8,7 @@ export const login = (data)=>{
         data
     })
 }
+// 获取路径
 export const getNav = (id)=>{
     return axios({
         url:`/nav/${id}`,
@@ -30,10 +31,10 @@ export const delTabVal = (id)=>{
     })
 }
 // 根据id编辑数据
-export const editTabVal = (id)=>{
+export const editTabVal = (id,data)=>{
     return axios({
         url:`/list/${id}`,
-        method:'patch',
+        method:'put',
         data
     })
 }

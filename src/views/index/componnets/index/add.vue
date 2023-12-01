@@ -32,7 +32,7 @@
 </template>
 <script setup>
 import { defineExpose, ref, reactive, onMounted } from 'vue'
-import { getTableList, delTabVal, editTabVal, getAuthor ,addData} from '../../../../api'
+import { getTableList, editTabVal, getAuthor ,addData} from '../../../../api'
 import moment from 'moment';
 const authorList = ref([])
 const showDrawer = ref(false)

@@ -29,13 +29,13 @@
         <div>
             <!-- 抽屉 -->
             <Add ref="showRef" @onMySonFunc="funcToSon"></Add>
-            <Edit ref="showRefe"></Edit>
+            <Edit ref="showRefe" :id="editId" :row="editRow" @onMySonFunc="funcToSon"></Edit>
         </div>
     </div>
 </template>
 <script  setup>
 // import { ElMessage,DrawerProps } from 'element-plus'
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, provide, reactive, ref } from 'vue'
 import { getTableList, delTabVal, editTabVal, pageCut } from '../../../../api'
 import Add from './add.vue';
 import Edit from './edit.vue';
@@ -46,12 +46,13 @@ const tableVal = ref([])
 const background = ref(false)
 const small = ref(false)
 const disabled = ref(false)
-
+provide(tableData)
 //  添加数据
 const handleAdd = (data) => {
     showRef.value.changeDra()
     console.log(showRef.value)
 }
+// 传子
 const funcToSon = () => {
     upDataPage()
 }
@@ -62,15 +63,13 @@ const page = reactive({
 })
 const total = ref(0)
 // 编辑
+
+const editId = ref('')
+const editRow = ref([])
 const handleEdit = (index, row) => {
+    editId.value = row.id
+    editRow.value = row
     showRefe.value.changeDra()
-    // editTabVal({
-
-    // }).then(() => {
-    //     upDataPage()
-
-    // })
-    console.log(index, row)
 }
 // 删除一条
 const handleDelete = (index, row) => {
@@ -102,10 +101,13 @@ const handleCurrentChange = (val) => {
         tableData.value = res.data
     })
 }
+// 更新分页
 const upDataPage = () => {
     getTableList().then((res) => {
-        {   tableVal.value =res.data
-            total.value = tableVal.value.length }
+        {
+            tableVal.value = res.data
+            total.value = tableVal.value.length
+        }
     })
     pageCut(page.currentPage).then((res) => {
         tableData.value = res.data
