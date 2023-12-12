@@ -1,6 +1,6 @@
 <template>
     <el-drawer v-model="showDrawer" title="I am the title" direction="rtl" :before-close="handleClose">
-        {{myVal }}
+        <!-- {{myVal }} -->
         <div class="demo-drawer__content">
             <el-form :model="form" label-width="120px">
                 <el-form-item label="发布标题">
@@ -49,22 +49,18 @@ const form = reactive({
 // 调用父组件方法
 const myVal = defineProps({
     id: {
-        type:String,
-        default:''
+        type: String,
+        default: ''
     },
     row: {
         type: Object
     }
 })
-// const myVal1 = ref([])
-// const change =()=>{
-//     myVal1.value = myVal
-// }
-// console.log(myVal.id,myVal.row)
+// const tableData =  inject("tableData")
 const myEmit = defineEmits(["onMySonFunc"])
 const onSubmit = () => {
     editTabVal(
-        2, form
+        tableData.value.row.id, form
     ).then((res) => {
         showDrawer.value = false
         myEmit("onMySonFunc")
@@ -87,22 +83,20 @@ const changeDra = () => {
 }
 defineExpose({ changeDra })
 // 监听地区id
-watch(
-    () => myVal.row,
-    (a, b) => {
-        console.log(a, b, "aaa")
-    },
-    {
-        deep: true,
-        immediate: true,
-        flush: 'post'
-    }
-),
-    onMounted(() => {
-        // change()
-        getAuthor().then((res) => {
-            authorList.value = res.data
-            // console.log(authorList.value,res.data)
-        })
+watch(myVal, (newVal,oldVal) => {
+    // form = oldVal
+    tableData.value = newVal;
+    // console.log(tableData.value.row, "11",newVal)
+},
+    { immediate: true ,
+    deep:true}
+);
+onMounted(() => {
+    // change()
+    getAuthor().then((res) => {
+        authorList.value = res.data
+        
     })
+    console.log(form.title)
+})
 </script>

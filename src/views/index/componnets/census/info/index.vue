@@ -4,24 +4,35 @@
     <div ref="leftB" id="leftb" />
     <div ref="leftC" id="leftc" />
     <div ref="leftD" id="leftd" />
+    <div ref="leftE" id="lefte" />
+    <div ref="leftF" id="leftf" />
+    <div ref="leftG" id="leftg" />
+    <div ref="map" id="map" />
+    <div ref="mapcq" id="mapcq" />
   </div>
 </template>
 
 <script setup>
 import * as echarts from 'echarts';
-
+import { mapData } from '../../../../../assets/map.js'
+import { mapCq } from '../../../../../assets/mapcq.js'
 import { ref, onMounted } from 'vue';
 onMounted(
   () => {
     init1(),
       init2(),
       init3(),
-      init4()
+      init4(),
+      init5(),
+      init6(),
+      init7(),
+      init8(),
+      init9()
   })
 // 柱状图
 const leftA = ref()
 const init1 = () => {
-  let myChart1 = echarts.init(leftA.value);//存储
+  let myChart = echarts.init(leftA.value);//存储
   var option = {
     title: {//标题设置
       text: '高兵text',
@@ -128,7 +139,7 @@ const init1 = () => {
       }
     }]
   };
-  myChart1.setOption(option);//设置参数
+  myChart.setOption(option);//设置参数
 }
 // 饼状图
 const leftB = ref()
@@ -171,6 +182,7 @@ const init2 = () => {
   }
   myChart1.setOption(option1);//设置参数
 }
+//曲线图
 const leftC = ref()
 const init3 = () => {
   let myChart = echarts.init(leftC.value);//存储
@@ -208,10 +220,10 @@ const init3 = () => {
               name: "最小值"
             }]
         },
-        markLine:{
-          data:[{
-            type:"average",
-            name:"平均值"
+        markLine: {
+          data: [{
+            type: "average",
+            name: "平均值"
           }]
         },
         data
@@ -220,6 +232,7 @@ const init3 = () => {
   }
   myChart.setOption(option);
 }
+// 多曲线
 const leftD = ref()
 const init4 = () => {
   let myChart = echarts.init(leftD.value);//存储
@@ -228,7 +241,7 @@ const init4 = () => {
   let data1 = [13, 34, 33, 36, 33, 43, 55];
   let data2 = [71, 44, 43, 36, 23, 13, 75];
   let data3 = [11, 24, 33, 46, 53, 63, 75];
-  
+
   let option = {
     title: {
       text: "折线图",
@@ -257,12 +270,12 @@ const init4 = () => {
         type: "line",//折线图
         smooth: true,//平缓，过度
         // 数据堆叠
-        stack:"num",//同类型的数据需要匹配相同的stack值
+        stack: "num",//同类型的数据需要匹配相同的stack值
         data,
-        areaStyle:{},
+        areaStyle: {},
         // 选中高亮
-        emphasis:{
-          focus:"series" //聚焦当前高亮
+        emphasis: {
+          focus: "series" //聚焦当前高亮
         }
       },
       {
@@ -270,12 +283,12 @@ const init4 = () => {
         type: "line",//折线图
         smooth: true,//平缓，过度
         // 数据堆叠
-        stack:"num",//同类型的数据需要匹配相同的stack值
-        data:data1,
-        areaStyle:{},
+        stack: "num",//同类型的数据需要匹配相同的stack值
+        data: data1,
+        areaStyle: {},
         // 选中高亮
-        emphasis:{
-          focus:"series" //聚焦当前高亮
+        emphasis: {
+          focus: "series" //聚焦当前高亮
         }
       },
       {
@@ -283,12 +296,12 @@ const init4 = () => {
         type: "line",//折线图
         smooth: true,//平缓，过度
         // 数据堆叠
-        stack:"num",//同类型的数据需要匹配相同的stack值
-        data:data2,
-        areaStyle:{},
+        stack: "num",//同类型的数据需要匹配相同的stack值
+        data: data2,
+        areaStyle: {},
         // 选中高亮
-        emphasis:{
-          focus:"series" //聚焦当前高亮
+        emphasis: {
+          focus: "series" //聚焦当前高亮
         }
       },
       {
@@ -296,20 +309,313 @@ const init4 = () => {
         type: "line",//折线图
         smooth: true,//平缓，过度
         // 数据堆叠
-        stack:"num",//同类型的数据需要匹配相同的stack值
-        data:data3,
-        areaStyle:{},
+        stack: "num",//同类型的数据需要匹配相同的stack值
+        data: data3,
+        areaStyle: {},
         // 选中高亮
-        emphasis:{
-          focus:"series" //聚焦当前高亮
+        emphasis: {
+          focus: "series" //聚焦当前高亮
         }
       },
     ]
   }
   myChart.setOption(option);
 }
-</script>
+// 散点图
+const leftE = ref()
+const init5 = () => {
+  let myChart = echarts.init(leftE.value)
+  let data = [[10.0, 8.04],
+  [8.07, 6.95],
+  [13.0, 7.58],
+  [9.05, 8.81],
+  [11.0, 8.33],
+  [14.0, 7.66],
+  [13.4, 6.81],
+  [10.0, 6.33],
+  [14.0, 8.96],
+  [12.5, 6.82],
+  [9.15, 7.2],
+  [11.5, 7.2],
+  [3.03, 4.23],
+  [12.2, 7.83],
+  [2.02, 4.47],
+  [1.05, 3.33],
+  [4.05, 4.96],
+  [6.03, 7.24],
+  [12.0, 6.26],
+  [12.0, 8.84],
+  [7.08, 5.82],
+  [5.02, 5.68]]
+  let option = {
+    title: {
+      text: "散点图"
+    },
+    grid: {//布局，距离边框
+      left: "20%",
+      top: "20%",
+      show: true,//图标外层边框
+      backgroundColor: "red",
+      borderColor: "purple"
+    },
+    xAxis: {},
+    yAxis: {},
+    tooltip: {},//提示
+    series: [
+      {
+        data,
+        type: 'scatter',//散点图
+        symbolSize: 30//点大小
+      }
+    ],
+    // 图形样式
+    color: {
+      // 线性渐变
+      type: "linear",
+      x: 0,
+      y: 0,
+      x2: 1,
+      y2: 0,
+      colorStops: [
+        {
+          offset: 0,
+          color: "#abc123"
+        },
+        {
+          offset: 1,
+          color: "#af1113"
+        },
+      ]
+    },
+    emphasis: {//高亮
+      itemStyle: {
+        borderColor: "rgba(100,211,233,.5)",
+        borderWidth: 39
+      }
+    }
+  }
+  myChart.setOption(option)
+}
+// k线图
+const leftF = ref()
+const kData = ref([
+  [20, 34, 10, 38],
+  [40, 35, 30, 50],
+  [31, 38, 33, 44],
+  [38, 15, 5, 42]
+])
+const computedData = () => {
+  return kData.value.map(item => item[0])
+}
+const init6 = () => {
+  let myChart = echarts.init(leftF.value)
+  let option = {
+    title: {
+      text: "k线图"
+    },
+    grid: {//布局，距离边框
+      left: "20%",
+      top: "20%",
+      show: true,//图标外层边框
+      backgroundColor: "red",
+      borderColor: "purple"
+    },
+    xAxis: {
+      data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
+    },
+    tooltip: {//提示
+      trigger: "axis",
+      axisPointer: {
+        type: 'cross'
+      },//默认直线line ,shadow阴影  cross十字
 
+    },
+    yAxis: {},
+    series: [
+      {
+        data: kData.value,
+        type: 'candlestick',//k线图
+        symbolSize: 30,//点大小
+        itemStyle: {
+          color: "#aac132",//上涨
+          color0: "#fffa11",//下跌，
+          borderColor: "red",
+          borderWidth: 1,
+          borderColor0: "#666123"
+        },
+        markPoint: {
+          data: [
+            {
+              name: "最大值",
+              type: "max",
+              // 在哪个维度设置最大最小值，
+              valueDim: "highest"
+            },
+            {
+              name: "最小值",
+              type: "min",
+              valueDim: "lowest"
+            },
+            {
+              name: "平均值",
+              type: "average"
+            }
+          ]
+        }
+      },
+      {
+        type: "line",//折线图
+        smooth: true,
+        data: computedData()
+      }
+    ],
+    // 图形样式
+    emphasis: {//高亮
+      itemStyle: {
+        borderColor: "rgba(100,211,233,.5)",
+        borderWidth: 39
+      }
+    }
+  }
+  myChart.setOption(option)
+}
+// 雷达图
+const leftG = ref()
+const init7 = () => {
+  let myChart = echarts.init(leftG.value)
+  let option = {
+    title: {
+      text: "雷达图"
+    },
+    radar: [
+      {
+        shape: "circle",
+        indicator: [//雷达指示器，用来指定雷达图中多个变量(维度)
+          { name: 'AQI', max: 300 },
+          { name: 'PM2.5', max: 350 },
+          { name: 'PM10', max: 300 },
+          { name: 'CO', max: 350 },
+          { name: 'NO2', max: 300 },
+          { name: 'SO2', max: 300 }],
+        //半径
+        radius: 120,
+        // 坐标系的起始角度
+        startAngle: 180,
+        // 内部层级
+        splitNumber: 4,
+        // 指示器名字
+        axisName: {
+          formatter: "{value}",
+          color: "#123123"
+        },
+        splitArea: {//设置分割区域效果
+          areaStyle: {
+            // 分割区样式
+            color: ["#234121", "#111232", "#aacabb", "#112331"]
+          }
+        },
+      }
+    ],
+    series:
+    {
+      type: "radar",
+      data: [
+        {
+          value: [111, 221, 221, 162, 212, 116],
+          areaStyle: { color: "rgba(112,122,234,.4)" }
+        }
+      ],
+      lineStyle: {
+        type: "dashed",
+      }
+    }
+
+  }
+  myChart.setOption(option)
+}
+const map = ref()
+const init8 = () => {
+
+  let myChart = echarts.init(map.value)
+  // 注册地图名
+  echarts.registerMap("chinaMap", mapData)
+  let option = {
+    geo: {//地理坐标组件
+      type: map,
+      map: "chinaMap",
+      roam: true, //平移
+      zoom: 10,//缩放比例，默认1
+      center: [107.32099, 30.293652]
+
+    },
+    series: [
+      {
+        // 散点图
+        type: "scatter",
+        data: [
+          {
+            name: "重庆市",//数据项名字
+            value: [
+              106.555562,//经度
+              29.569247,//维度
+              4000
+            ]
+          }
+        ],
+        coordinateSystem: "geo",
+        symbolSize: 30,//点大小
+        // label: {
+        //   show: true
+        // },
+      },
+      {
+        type:"effectScatter",//涟漪效果散点图,动效
+        coordinateSystem:"geo",
+        data: [
+          {
+            name: "北京",//数据项名字
+            value: [
+            116.400739,
+            39.924759,
+            4000
+            ]
+          }
+        ],
+        // 涟漪效果相关配置
+        rippleEffect:{
+          number:2,
+          scale:4
+        },
+        itemStyle:{
+          color:"red"
+        }
+      }
+    ]
+  }
+  myChart.setOption(option)
+}
+const mapcq = ref()
+const init9 = () => {
+  let myChart = echarts.init(mapcq.value)
+  // 注册地图名
+  echarts.registerMap("mapcq", mapCq)
+  let option = {
+    geo: {//地理坐标组件
+      type: map,
+      map: "mapcq",
+      roam: true, //平移
+      // zoom:10,//缩放比例，默认1
+      // center:[107.32099,30.293652]
+      label: {
+        show: true,
+      }
+
+    }
+  }
+  myChart.setOption(option)
+}
+
+</script>
 <style lang="scss" scoped>
 .box {
   display: flex;
@@ -334,9 +640,39 @@ const init4 = () => {
   height: 500px;
   border: 1px solid red;
 }
+
 #leftd {
   width: 500px;
   height: 500px;
   border: 1px solid red;
 }
-</style>
+
+#lefte {
+  width: 500px;
+  height: 500px;
+  border: 1px solid red;
+}
+
+#leftf {
+  width: 500px;
+  height: 500px;
+  border: 1px solid red;
+}
+
+#leftg {
+  width: 500px;
+  height: 500px;
+  border: 1px solid red;
+}
+
+#map {
+  width: 500px;
+  height: 500px;
+  border: 1px solid red;
+}
+
+#mapcq {
+  width: 500px;
+  height: 500px;
+  border: 1px solid red;
+}</style>

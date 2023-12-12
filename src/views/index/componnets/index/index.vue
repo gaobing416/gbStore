@@ -46,7 +46,7 @@ const tableVal = ref([])
 const background = ref(false)
 const small = ref(false)
 const disabled = ref(false)
-provide(tableData)
+provide("tableData",tableData.value)
 //  添加数据
 const handleAdd = (data) => {
     showRef.value.changeDra()

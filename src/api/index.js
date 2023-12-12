@@ -30,11 +30,18 @@ export const delTabVal = (id)=>{
         method:'delete',
     })
 }
+// 根据id删除数据
+export const delTabValSelect = (ids)=>{
+    return axios({
+        url:`/list?${ids.id}&${ids.id1}`,
+        method:'delete',
+    })
+}
 // 根据id编辑数据
 export const editTabVal = (id,data)=>{
     return axios({
         url:`/list/${id}`,
-        method:'put',
+        method:'patch',
         data
     })
 }
@@ -58,6 +65,34 @@ export const addData = (data)=>{
 export const pageCut = (currentPage)=>{
     return axios({
         url:`/list?_page=${currentPage}&_limit=5`,
+        method:'get',
+    })
+}
+// h获取ONE charts数据
+export const getChartOne = ()=>{
+    return axios({
+        url:`/chartOne`,
+        method:'get',
+    })
+}
+// h获取two charts数据
+export const getChartTwo = ()=>{
+    return axios({
+        url:`/chartTwo`,
+        method:'get',
+    })
+}
+// h获取three charts数据
+export const getChartThree = ()=>{
+    return axios({
+        url:`/chartThree`,
+        method:'get',
+    })
+}
+// h获取four charts数据
+export const getChartFour = ()=>{
+    return axios({
+        url:`/chartFour`,
         method:'get',
     })
 }

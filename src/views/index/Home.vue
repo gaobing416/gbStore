@@ -55,8 +55,15 @@ onMounted(()=>{
 .el-header {
     border-bottom: solid 1px var(--el-menu-border-color);
 }
-
+body {
+    background: url('../../../../../assets/1.jpg') top center no-repeat;
+}
+* {
+    margin: 0 ;
+    padding: 0;
+}
 .el-main {
     border: solid 1px var(--el-menu-border-color);
+ 
 }
 </style>
